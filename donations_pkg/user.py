@@ -1,24 +1,22 @@
 def login(database, username, password):
-   ## username = input("Enter Username:")
-    ##password = input("Enter Password:")
-    if {username: password} == database:
-        print("Welcome! ", username)
 
-    elif username != database:
-        print("incorrect Username")
-        username = input("Enter Username:")
-        ##password = input("Enter Password:")
-    elif password != database:
+    if username in database and database[username] == password:
+        print(f"\nWelcome back {username}!")
+        return username
+    elif username in database and database[username] != password:
+        print(f"\nIncorrect password for {username}!")
+        return ""
+    else:
         print("incorrect Password")
-       ## username = input("Enter Username:")
+        ## username = input("Enter Username:")
         password = input("Enter Password:")
+        return ""
 
 
 def register(database, username):
-
     if username in database:
-        print("Username already registered.")
+        print("\nUsername already registered.")
         return ""
     else:
-        print(" ")
-        return database.append(username)
+        print(f"New Username {username} registered!")
+        return ""

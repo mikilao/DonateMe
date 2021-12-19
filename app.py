@@ -12,25 +12,24 @@ while True:
     show_homepage()
     if authorized_user == " ":
         print("You must be logged in to donate"),
-    elif authorized_user != "":
-        print("Logged in as ", authorized_user)
+    elif authorized_user != " ":
+        print("Logged in as ", {authorized_user})
 
     todo = input("Choose an option:")
 
     if todo == "1":
-        username = input("Enter username: ")
-        password = input("Enter your password: ")
-        login(database, username, password)
+        username = input("\nusername: ")
+        password = input("password: ")
+        authorized_user = login(database, username, password)
 
-        if username != database:
-            print("username not recognized")
     elif todo == "2":
-        username = input("Enter New Username:")
-        password = input("Enter Password:")
+        username = input("\n New username: ")
+        password = input("New password: ")
         authorized_user = register(database, username)
+
         if authorized_user != " ":
-            database.update(username)
-        print("TODO: Write Register Functionality")
+            database[username] = password
+
     elif todo == "3":
         print("TODO: Write donate Functionality")
     elif todo == "4":
